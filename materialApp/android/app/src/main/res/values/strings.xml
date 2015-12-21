@@ -24,4 +24,7 @@
     <string name="title_friends">Friends</string>
     <string name="title_home">Home</string>
 
+    <string name="message_description">Description</string>
+    <string name="message_linkshare"><a href="http://www.google.com">Share</a></string>
+    <string name="message_linkemail"><a href="mailto:jeremyw@herbalife.com">Email</a></string>
 </resources>

@@ -24,6 +24,10 @@
         android:gravity="center_horizontal"
         android:text="Edit fragment_home.xml to change the appearance" />
 
-
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/friendlist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp" />
 
 </LinearLayout>
