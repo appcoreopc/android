@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_id": "androidsso-a1c38",
+    "project_number": "472830213341",
+    "name": "androidsso"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:472830213341:android:45f09c78e4518e7d",
+        "client_id": "android:com.appcore.androidsso",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "com.appcore.androidsso"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 1
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:472830213341:android:f929567dd4c33c88",
+        "client_id": "android:sso.appcore.com.appcoresso",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "sso.appcore.com.appcoresso"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "472830213341-m32rcbtis81ticnvf4nqq33q0f8e3pu1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "sso.appcore.com.appcoresso",
+            "certificate_hash": "7E62FE21DBB87DD4FAE537FBD802BAAD45FD34C7"
+          }
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 2
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}
