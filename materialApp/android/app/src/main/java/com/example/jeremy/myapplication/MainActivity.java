@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.jeremy.myapplication.FriendModule.FriendFragment;
+import com.example.jeremy.myapplication.Notification.SnackBarNotificationFragment;
 
 public class MainActivity extends AppCompatActivity implements FragmentDrawer.FragmentDrawerListener {
 
@@ -74,6 +75,10 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
             case 2:
                 fragment = new MessageFragment();
                 title = getString(R.string.title_messages);
+                break;
+            case 3:
+                fragment = new SnackBarNotificationFragment();
+                title = getString(R.string.nav_show_notifications);
                 break;
             default:
                 break;
