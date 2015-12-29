@@ -13,7 +13,7 @@ import retrofit.http.Part;
 
 /**
  * Created by jeremyw on 28/12/2015.
- */
+*/
 public interface FileUploadService {
 
     @Multipart
