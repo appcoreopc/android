@@ -12,9 +12,19 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
             </intent-filter>
+
+        </activity>
+        <receiver android:name=".SwitchButtonListener" android:exported="false">
+        </receiver>
+        <activity
+            android:name=".PlayChatActivity"
+            android:label="@string/title_activity_play_chat"
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>
 
