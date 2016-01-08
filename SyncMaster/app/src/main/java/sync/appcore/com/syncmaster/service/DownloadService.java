@@ -28,7 +28,7 @@ public class DownloadService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        Log.v("Download Service", "Task to execute at:" + new Date().toString());
+        Log.v("Download Service", "@Bind at:" + new Date().toString());
         return mBinder;
     }
 

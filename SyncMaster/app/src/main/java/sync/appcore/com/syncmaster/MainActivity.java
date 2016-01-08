@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     private final String broadcastIntent = "sync.appcore.com.broadcast";
     DownloadService downloadService;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
