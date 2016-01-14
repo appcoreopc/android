@@ -1,9 +1,14 @@
 package sync.appcore.com.syncmaster;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.content.ComponentName;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.net.Uri;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +22,7 @@ import android.widget.Toast;
 import java.util.Date;
 import java.util.ServiceConfigurationError;
 
+import sync.appcore.com.syncmaster.providers.Note;
 import sync.appcore.com.syncmaster.service.DownloadService;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button btnStartService = (Button) findViewById(R.id.btnStartService);
-
         btnStartService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,6 +61,21 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Log.v("UI Logging", "@ : " + new Date().toString());
+            }
+        });
+
+
+        Button btnQuery = (Button) findViewById(R.id.btnQuery);
+
+        btnQuery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ContentResolver resolver = getContentResolver();
+
+                ContentValues values = new ContentValues();
+                values.put(Note.Notes.TITLE, "Notebookie");
+                values.put(Note.Notes.TEXT, "Notebookie text");
+                resolver.insert(Note.Notes.CONTENT_URI, values);
             }
         });
     }
@@ -105,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

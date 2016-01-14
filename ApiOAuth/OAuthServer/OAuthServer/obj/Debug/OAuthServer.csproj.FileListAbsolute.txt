@@ -36,7 +36,6 @@ D:\test\androidapp\android\ApiOAuth\OAuthServer\OAuthServer\bin\Newtonsoft.Json.
 D:\test\androidapp\android\ApiOAuth\OAuthServer\OAuthServer\bin\System.Net.Http.Formatting.xml
 D:\test\androidapp\android\ApiOAuth\OAuthServer\OAuthServer\bin\System.Web.Http.xml
 D:\test\androidapp\android\ApiOAuth\OAuthServer\OAuthServer\bin\System.Web.Http.WebHost.xml
-D:\test\androidapp\android\ApiOAuth\OAuthServer\OAuthServer\obj\Debug\OAuthServer.csprojResolveAssemblyReference.cache
 D:\test\androidapp\android\ApiOAuth\OAuthServer\OAuthServer\obj\Debug\OAuthServer.dll
 D:\test\androidapp\android\ApiOAuth\OAuthServer\OAuthServer\obj\Debug\OAuthServer.pdb
 D:\test\androidapp\android\ApiOAuth\OAuthServer\OAuthServer\bin\Microsoft.AspNet.Identity.Core.dll

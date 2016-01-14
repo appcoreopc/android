@@ -1,6 +1,7 @@
 package sync.appcore.com.syncmaster.providers;
 
 import android.content.ContentProvider;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
@@ -73,12 +74,24 @@ public class DataContentProvider extends ContentProvider {
     @Nullable
     @Override
     public Uri insert(Uri uri, ContentValues contentValues) {
+
+        if (sUriMatcher.match(uri) != NOTES)
+            throw new IllegalArgumentException("Mismatch URi");
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        long rowId  = db.insert(TARGET_TABLE_NAME, Note.Notes.TEXT, contentValues);
+        if (rowId > 0)
+        {
+            Uri insertedUri = ContentUris.withAppendedId(Note.Notes.CONTENT_URI, rowId);
+            getContext().getContentResolver().notifyChange(insertedUri, null);
+        }
+
         return null;
     }
 
     @Override
     public int delete(Uri uri, String where, String[] whereArgs) {
-            SQLiteDatabase db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
         switch (sUriMatcher.match(uri)) {
             case NOTES:
                 break;

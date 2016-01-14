@@ -7,6 +7,7 @@ import android.provider.BaseColumns;
  * Created by jeremyw on 06/01/2016.
  */
 
+
 public class Note {
 
     public Note() {

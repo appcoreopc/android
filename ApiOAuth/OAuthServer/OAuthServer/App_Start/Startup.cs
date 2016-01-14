@@ -4,6 +4,7 @@ using Microsoft.Owin;
 using Owin;
 using Microsoft.Owin.Security.OAuth;
 using System.Security.Claims;
+using Microsoft.Owin.Security;
 
 [assembly: OwinStartup(typeof(OAuthServer.App_Start.Startup))]
 
@@ -19,16 +20,27 @@ namespace OAuthServer.App_Start
         private const string AuthorizationPath = "/oauth/token";
         public void Configuration(IAppBuilder app)
         {
-            app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions
+
+            var authorizationOption = new OAuthAuthorizationServerOptions
             {
                 TokenEndpointPath = new PathString(AuthorizationPath),
                 Provider = new MyAuthorizationServerProvider(),
                 AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
                 AllowInsecureHttp = true,
                 AuthenticationMode = Microsoft.Owin.Security.AuthenticationMode.Active
-            });
+            };
 
-            // app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions()); 
+            //app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions
+            //{
+            //    TokenEndpointPath = new PathString(AuthorizationPath),
+            //    Provider = new MyAuthorizationServerProvider(),
+            //    AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
+            //    AllowInsecureHttp = true,
+            //    AuthenticationMode = Microsoft.Owin.Security.AuthenticationMode.Active
+            //});
+
+
+            app.UseOAuthBearerTokens(authorizationOption); 
         }
     }
 
@@ -68,8 +80,11 @@ namespace OAuthServer.App_Start
             if (client.AllowedGrant == OAuthGrant.Client)
             {
                 // Ok // 
-                ClaimsIdentity identity = new ClaimsIdentity("OAuth", "name", "admin");
-                context.Validated(identity);
+                var oAuthIdentity = new ClaimsIdentity(context.Options.AuthenticationType);
+                oAuthIdentity.AddClaim(new Claim(ClaimTypes.Name, "jeremy"));
+                var ticket = new AuthenticationTicket(oAuthIdentity, new AuthenticationProperties());
+                //ClaimsIdentity identity = new ClaimsIdentity("OAuth", "name", "admin");
+                context.Validated(ticket);
             }
             else if (client.AllowedGrant == OAuthGrant.ResourceOwner)
             {
