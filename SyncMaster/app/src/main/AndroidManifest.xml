@@ -23,6 +23,10 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".security.AuthenticatorActivity">
+            <category android:name="android.intent.category.LAUNCHER" />
+        </activity>
+
         <service android:name=".service.DownloadService"></service>
 
         <receiver
