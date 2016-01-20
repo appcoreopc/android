@@ -25,18 +25,7 @@ public class MainActivity extends ActionBarActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    //ParseAnalytics.trackAppOpenedInBackground(getIntent());
-
-    try {
-
-     // Parse.initialize(this, "QRKbKpKzzj2NPsbsRZcabHQBvKxbN6M4cZ1E2cwR", "ODIDntxKTUy13PM39vBCHETETuZ8lAOL5uGFhbnd");
-      ParseInstallation.getCurrentInstallation().saveInBackground();
-    }
-    catch (Exception e)
-    {
-      Log.v("ParseAp", e.getMessage());
-    }
-
+    ParseAnalytics.trackAppOpenedInBackground(getIntent());
   }
 
   @Override

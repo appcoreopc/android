@@ -12,6 +12,7 @@ import android.app.Application;
 
 import com.parse.Parse;
 import com.parse.ParseACL;
+import com.parse.ParseInstallation;
 import com.parse.ParseUser;
 
 
@@ -20,17 +21,19 @@ public class StarterApplication extends Application {
   @Override
   public void onCreate() {
     super.onCreate();
+    System.out.println("application");
+    Parse.setLogLevel(Parse.LOG_LEVEL_VERBOSE);
+    Parse.initialize(this, "QRKbKpKzzj2NPsbsRZcabHQBvKxbN6M4cZ1E2cwR", "ODIDntxKTUy13PM39vBCHETETuZ8lAOL5uGFhbnd");
+    ParseInstallation.getCurrentInstallation().saveInBackground();
 
     // Enable Local Datastore.
-    Parse.enableLocalDatastore(this);
-
+    //Parse.enableLocalDatastore(this);
     // Add your initialization code here
-    Parse.initialize(this);
-
-    ParseUser.enableAutomaticUser();
-    ParseACL defaultACL = new ParseACL();
+    //Parse.initialize(this);
+    //ParseUser.enableAutomaticUser();
+    //ParseACL defaultACL = new ParseACL();
     // Optionally enable public read access.
     // defaultACL.setPublicReadAccess(true);
-    ParseACL.setDefaultACL(defaultACL, true);
+    //ParseACL.setDefaultACL(defaultACL, true);
   }
 }

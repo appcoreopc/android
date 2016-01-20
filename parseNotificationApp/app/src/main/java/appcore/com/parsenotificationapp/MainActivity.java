@@ -18,9 +18,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Parse.initialize(this, "QRKbKpKzzj2NPsbsRZcabHQBvKxbN6M4cZ1E2cwR", "ODIDntxKTUy13PM39vBCHETETuZ8lAOL5uGFhbnd");
-        ParseInstallation.getCurrentInstallation().saveInBackground();
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
