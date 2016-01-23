@@ -48,37 +48,60 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mRegistrationProgressBar = (ProgressBar) findViewById(R.id.registrationProgressBar);
-
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 mRegistrationProgressBar.setVisibility(ProgressBar.GONE);
-                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-
-                boolean sentToken = sharedPreferences.getBoolean(GcmAppConstant.SENT_TOKEN_TO_SERVER, false);
-
-                if (sentToken)
-                {
+                SharedPreferences sharedPreferences =
+                        PreferenceManager.getDefaultSharedPreferences(context);
+                boolean sentToken = sharedPreferences
+                        .getBoolean(GcmAppConstant.SENT_TOKEN_TO_SERVER, false);
+                if (sentToken) {
                     mInformationTextView.setText(getString(R.string.gcm_send_message));
-                } else
-                {
+                } else {
                     mInformationTextView.setText(getString(R.string.token_error_message));
                 }
             }
         };
-
         mInformationTextView = (TextView) findViewById(R.id.informationTextView);
-        if (checkPlayServices())
-        {
+
+        if (checkPlayServices()) {
+            // Start IntentService to register this application with GCM.
             Intent intent = new Intent(this, RegistrationIntentService.class);
             startService(intent);
         }
+        mRegistrationProgressBar = (ProgressBar) findViewById(R.id.registrationProgressBar);
+        mRegistrationBroadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                mRegistrationProgressBar.setVisibility(ProgressBar.GONE);
+                SharedPreferences sharedPreferences =
+                        PreferenceManager.getDefaultSharedPreferences(context);
+                boolean sentToken = sharedPreferences
+                        .getBoolean(GcmAppConstant.SENT_TOKEN_TO_SERVER, false);
+                if (sentToken) {
+                    mInformationTextView.setText(getString(R.string.gcm_send_message));
+                } else {
+                    mInformationTextView.setText(getString(R.string.token_error_message));
+                }
+            }
+        };
+        mInformationTextView = (TextView) findViewById(R.id.informationTextView);
+
+        if (checkPlayServices()) {
+            // Start IntentService to register this application with GCM.
+            Intent intent = new Intent(this, RegistrationIntentService.class);
+            startService(intent);
+        }
+
     }
 
     @Override
     protected void onResume() {
+
         super.onResume();
-        LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver, new IntentFilter(GcmAppConstant.REGISTRATION_COMPLETE));
+        LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
+                new IntentFilter(GcmAppConstant.REGISTRATION_COMPLETE));
     }
 
     @Override
